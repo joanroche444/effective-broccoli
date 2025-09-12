@@ -1,20 +1,20 @@
 import 'package:effectivebrocoli/core/theme/app_pallete.dart';
-import 'package:effectivebrocoli/features/auth/presentation/pages/login_page.dart';
+import 'package:effectivebrocoli/features/auth/presentation/pages/signup_page.dart';
 import 'package:effectivebrocoli/features/auth/presentation/widgets/auth_field.dart';
 import 'package:effectivebrocoli/features/auth/presentation/widgets/authgradient_button.dart';
 import 'package:flutter/material.dart';
 
-class SignupPage extends StatefulWidget {
-  const SignupPage({super.key});
-  static route() => MaterialPageRoute(builder: (context) => SignupPage());
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+  static route() => MaterialPageRoute(builder: (context) => LoginPage());
 
   @override
-  State<SignupPage> createState() => SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class SignupPageState extends State<SignupPage> {
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
-  final nameController = TextEditingController();
+
   final passwirdController = TextEditingController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -23,7 +23,6 @@ class SignupPageState extends State<SignupPage> {
   void dispose() {
     emailController.dispose();
     passwirdController.dispose();
-    nameController.dispose();
     // TODO: implement dispose
     super.dispose();
   }
@@ -31,7 +30,6 @@ class SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Form(
@@ -40,12 +38,11 @@ class SignupPageState extends State<SignupPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Sign Up',
+                'Log in',
                 style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 30),
-              AuthField(hintText: 'Name', controller: nameController),
-              SizedBox(height: 20),
+
               AuthField(hintText: 'Email', controller: emailController),
               SizedBox(height: 20),
               AuthField(
@@ -54,20 +51,19 @@ class SignupPageState extends State<SignupPage> {
                 isObscureText: true,
               ),
               SizedBox(height: 20),
-              AuthgradientButton(buttonText: 'Sign Up'),
+              AuthgradientButton(buttonText: 'Log In'),
               SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, LoginPage.route());
+                  Navigator.push(context, SignupPage.route());
                 },
-
                 child: RichText(
                   text: TextSpan(
-                    text: ' Already have a account ?',
+                    text: ' Dont Have a Account yet ?',
                     style: Theme.of(context).textTheme.titleMedium,
                     children: [
                       TextSpan(
-                        text: ' Log in ',
+                        text: ' Create Brocolli  ',
                         style: Theme.of(context).textTheme.titleMedium
                             ?.copyWith(
                               color: AppPallete.gradient2,
